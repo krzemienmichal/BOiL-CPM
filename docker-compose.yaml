@@ -1,0 +1,11 @@
+version: '3' 
+services:
+  frontend: 
+    container_name: "frontend-react-BOiL-CPM"  
+    
+    build:
+      context: ./cpm  
+    ports:
+      - 3001:80
+    environment: 
+      network_mode: "host" 
