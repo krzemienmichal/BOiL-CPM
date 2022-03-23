@@ -5,7 +5,10 @@
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
+    min-width: 100vh;
+
   }
   
   @keyframes gradient {
@@ -30,4 +33,10 @@
 }
 .tast-container {
   display: grid;
+}
+
+.task-line {
+  height: 12px;
+  border: 1;
+  box-shadow: inset 1 22px 22px -22px rgba(114, 114, 114, 0.5);
 }

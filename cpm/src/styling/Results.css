@@ -1,0 +1,29 @@
+
+.results-span{
+    position: relative;
+    border: 1px;
+    margin-left: 20px;
+    margin-top: 40%;
+   
+    background-color: #ffcaca;
+    min-width: 80vh;
+    max-height: 20vh;
+    border-radius: 5px 5px 5px;
+    border: 1px solid red;
+    padding-top: 3vh;
+    padding-bottom: 2vh;
+
+}
+.results-paragraph {
+    
+    margin-left: 35%;
+    color : black;
+    text-align: left;
+    font-size: 20px;
+    white-space: nowrap;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    
+}
