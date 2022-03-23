@@ -1,22 +1,23 @@
 
 .results-span{
     position: relative;
+    display: block;
+    margin-top: 10px;
     border: 1px;
     margin-left: 20px;
-    margin-top: 40%;
    
-    background-color: #ffcaca;
+    background-color: #ffff;
     min-width: 80vh;
     max-height: 20vh;
-    border-radius: 5px 5px 5px;
-    border: 1px solid red;
+    border-radius: 15px 15px 15px;
+    border: 1px solid #132c54;
     padding-top: 3vh;
     padding-bottom: 2vh;
 
 }
 .results-paragraph {
     
-    margin-left: 35%;
+    margin-left: 50%;
     color : black;
     text-align: left;
     font-size: 20px;

@@ -4,12 +4,16 @@ import {SyntheticEvent, useState} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../styling/Results.css"
 import Activity from '../services/model'
+import CPMEvent from "../services/CPMEvent";
 
-const Results = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) => void,}) => {
+const Results = (props: {  tasks: Array<Activity>,
+    cpmEvents: Array<CPMEvent>, setCPMEvents:(t:Array<CPMEvent>) => void}) => {
     
     var maxTime = 10;
     var minTime = 1;
     var criticalPath = ["a", "b", "c"]
+
+    // props.setCPMEvents(eventArray)
     return (
         <span className = "results-span">
             <p className = "results-paragraph"> Max time = {maxTime}</p>

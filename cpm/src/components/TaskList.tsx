@@ -8,7 +8,9 @@ import Activity from '../services/model'
 const TaskList = (props: { task: Activity , tasks: Array<Activity> , setTasks: (t:Array<Activity>) => void,}) => {
   const [taskName, setTaskName] = useState(props.task.name)
   const [duration, setDuration] = useState(props.task.duration)
-  const [predecessors, setPredecessors] = useState(props.task.previous_activity.join(", "))  
+  // const name_array =
+  const [predecessors, setPredecessors] = useState(props.task.previous_activity.join(", "))
+  //  przejsc po tablicy previous activities, dodac nazwy do tablicy stringow i joinac z useState(name_array.join(", "))
   console.log(props.tasks)
   const submitDelete = async (e: SyntheticEvent) => {
    props.setTasks(props.tasks.filter((t:Activity) =>t.id !== props.task.id))
@@ -16,7 +18,7 @@ const TaskList = (props: { task: Activity , tasks: Array<Activity> , setTasks: (
    
   }
   const submitUpdate = async (e: SyntheticEvent) => {
-    var splitted = predecessors.split(", ", ); 
+    var splitted = predecessors.split(", ", ); //tablica obiektow zamiast nazw
    props.setTasks( props.tasks.map((tasK) => {
       if(tasK.id === props.task.id){
         return {... tasK, name: taskName, duration : duration, previous_activity: splitted}

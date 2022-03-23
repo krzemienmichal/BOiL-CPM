@@ -31,7 +31,7 @@
   margin:10px;
   display: grid;
 }
-.tast-container {
+.task-container {
   display: grid;
 }
 
@@ -39,4 +39,9 @@
   height: 12px;
   border: 1;
   box-shadow: inset 1 22px 22px -22px rgba(114, 114, 114, 0.5);
+}
+
+.resultsList{
+    position: absolute;
+    display: grid;
 }

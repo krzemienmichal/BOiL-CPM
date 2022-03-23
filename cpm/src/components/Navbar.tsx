@@ -6,7 +6,7 @@ import "../styling/Navbar.css"
 import Activity from '../services/model'
 
 const NavbarCustom = (props: {  }) => {
- 
+
     return (
             <Navbar bg="dark" variant="dark" expand={false}>
             <Container fluid>

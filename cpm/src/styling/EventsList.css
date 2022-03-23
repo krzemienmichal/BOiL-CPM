@@ -1,0 +1,23 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+#input-cpmevent-list  {
+    margin: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+
+    border: none;
+
+}
+
+
+#form-cpmevent-list{
+    border: 1px solid #132c54;
+    background: white;
+    margin-top: 3px;
+    padding-left: 18px;
+    margin-left: 10px;
+    border-radius: 25px;
+    padding-right: 18px;
+}
