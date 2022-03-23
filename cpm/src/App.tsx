@@ -4,6 +4,7 @@ import './App.css';
 import {Inputs} from './components/Inputs';
 import {TaskList} from './components/TaskList'
 import {Results} from './components/Results'
+import { NavbarCustom } from './components/Navbar';
 import {useState} from  'react'
 import Activity from "./services/model"
 
@@ -18,6 +19,10 @@ function App() {
   const [tasks, setTasks] = useState<Array<Activity>>([])
   return (
     <div className="App">
+      <div className = "navbar-container">
+        <NavbarCustom/>
+        
+      </div>
       <div className="content-container">
         <div className="tasks-container">
           <div className="tasksList">
