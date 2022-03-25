@@ -15,7 +15,6 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
     }
     let data : Array<Activity>
     const handleData = () => {
-      //  console.log("name input " +(event.target as HTMLInputElement).value )
       let handledData = []
         for (let i=0;i<data.length ;i++){
             let prev = null
@@ -33,9 +32,6 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
             temp.push(prev)
             handledData.push(temp)
         }
-        
-         //setRows(handledData)
-       console.log(handledData)
        props.setData(handledData)
         
       }
@@ -53,7 +49,6 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
         setTaskName("")
         setDuration(1)
         setPredecessors("")    
-        console.log(data)
         handleData()
       }
     const handleNameInput = (event: SyntheticEvent) => {

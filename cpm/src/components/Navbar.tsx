@@ -19,27 +19,18 @@ const NavbarCustom = (props: { Data: Array<Array<any>>, }) => {
         { type: "string", label: "Dependencies" },
       ];
     const Data =[columns, ...props.Data]
-    function daysToMilliseconds(days: number) {
-        return days * 24 * 60 * 60 * 1000;
-      }
-   // const handleNameInput = (event: SyntheticEvent) => {
-        
-          
-          
-        
-        
-        //useEffect(() => handleData(),[props.tasks]);
-        //handleData()
-         const options = {
-            height: 275,
+    
+  
+    const options = {
+            height: props.Data.length *55,
             gantt: {
               defaultStartDateMillis: new Date(2021, 3, 18),
             },
           };
-      //}
+    
     
     return (
-            <Navbar bg="dark" variant="dark"  expand={false}>
+            <Navbar bg="dark" variant="dark"  expand={false}  fixed = "top" className = "main-nav">
             <Container fluid > 
                 <Navbar.Brand href="#">Critical Path Method</Navbar.Brand>
                 <Navbar.Toggle aria-controls="offcanvasNavbar" />
@@ -47,9 +38,10 @@ const NavbarCustom = (props: { Data: Array<Array<any>>, }) => {
                 id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel"
                 placement="end"
+                bg="dark"
                 >
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title id="offcanvasNavbarLabel">Offcanvas</Offcanvas.Title>
+                    <Offcanvas.Title id="offcanvasNavbarLabel" className ="ChartTitle">Gantt Chart:</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body >
                 <Chart

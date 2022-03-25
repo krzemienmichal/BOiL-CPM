@@ -9,19 +9,19 @@ const EventList = (props: {cpmEvent: CPMEvent}) => {
     return( <Form id = "form-cpmevent-list" >
         <Row xs="auto">
             <Col id = "input-cpmevent-list" variant="light" >
-                <Form.Control placeholder={props.cpmEvent.id.toString()} className="square border border-1"
+                <Form.Control size="sm" placeholder={props.cpmEvent.id.toString()} className="square border border-1"
                               disabled/>
             </Col>
             <Col id = "input-cpmevent-list" variant="light">
-                <Form.Control placeholder={props.cpmEvent.t_begin.toString()} className="square border border-1"
+                <Form.Control size="sm" placeholder={props.cpmEvent.t_begin.toString()} className="square border border-1"
                               disabled/>
             </Col>
             <Col id = "input-cpmevent-list" variant="light">
-                <Form.Control placeholder={props.cpmEvent.t_end.toString()} className="square border border-1"
+                <Form.Control size="sm"  placeholder={props.cpmEvent.t_end.toString()} className="square border border-1"
                               disabled/>
             </Col>
             <Col id = "input-cpmevent-list" variant="light">
-                <Form.Control placeholder={props.cpmEvent.t_diff.toString()} className="square border border-1"
+                <Form.Control size="sm" placeholder={props.cpmEvent.t_diff.toString()} className="square border border-1"
                               disabled/>
             </Col>
         </Row>
