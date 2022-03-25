@@ -5,11 +5,40 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "../styling/Inputs.css"
 import Activity from '../services/model'
 
-const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) => void,}) => {
+const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) => void, setData: (t:Array<Array<any>>) => void,}) => {
+  
     const [taskName, setTaskName] = useState("")
     const [duration, setDuration] = useState(0)
     const [predecessors, setPredecessors] = useState("")
-  
+    function daysToMilliseconds(days: number) {
+      return days * 24 * 60 * 60 * 1000;
+    }
+    let data : Array<Activity>
+    const handleData = () => {
+      //  console.log("name input " +(event.target as HTMLInputElement).value )
+      let handledData = []
+        for (let i=0;i<data.length ;i++){
+            let prev = null
+            if(data[i].previous_activity.join(",") !==""){
+              prev =data[i].previous_activity.join(",")
+            }
+            let temp = []
+            temp.push(data[i].name)
+            temp.push(data[i].name)
+            temp.push(null)
+            temp.push(null)
+            temp.push(null)
+            temp.push(daysToMilliseconds(data[i].duration))
+            temp.push(null)
+            temp.push(prev)
+            handledData.push(temp)
+        }
+        
+         //setRows(handledData)
+       console.log(handledData)
+       props.setData(handledData)
+        
+      }
     const submit = async (e: SyntheticEvent) => {
         let taskid = 0;
         if (props.tasks.length !==0){
@@ -19,10 +48,13 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
         
         e.preventDefault();
         props.setTasks( [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: splitted}])
+        data = [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: splitted}]
+        
         setTaskName("")
         setDuration(1)
         setPredecessors("")    
-        console.log(props.tasks)
+        console.log(data)
+        handleData()
       }
     const handleNameInput = (event: SyntheticEvent) => {
         //console.log("name input " +(event.target as HTMLInputElement).value )

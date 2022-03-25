@@ -21,6 +21,7 @@ function App() {
   };
   const [tasks, setTasks] = useState<Array<Activity>>([])
   const [cpmEvent, setCPMEvents] = useState<Array<CPMEvent>>([])
+  const [Data, setData] = useState<Array<Array<any>>>([])
   var mockcpm = [{id:1, t_begin: 10, t_end:20, t_diff:10},{id:2, t_begin: 5, t_end:123, t_diff:10},{id:3, t_begin: 6, t_end:11, t_diff:5}]
 
   useEffect(() => setCPMEvents(mockcpm),[]);
@@ -28,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <div className = "navbar-container">
-        <NavbarCustom/>
+        <NavbarCustom Data ={Data} />
         
       </div>
       <div className="content-container">
@@ -41,7 +42,7 @@ function App() {
           
           <div className="taskInput">
           <hr className="taskline"/>
-            <Inputs tasks = {tasks} setTasks={setTasks} /> 
+            <Inputs tasks = {tasks} setTasks={setTasks} setData = {setData}/> 
         
           </div>
         </div>

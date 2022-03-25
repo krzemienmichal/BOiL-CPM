@@ -1,0 +1,6 @@
+@media (min-width: 768px) {
+    .navbar-side {
+        min-width: 50%;
+        max-width: 80%;
+    }
+}
