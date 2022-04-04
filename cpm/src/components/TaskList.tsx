@@ -4,14 +4,15 @@ import {SyntheticEvent, useState} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../styling/TaskList.css"
 import Activity from '../services/model'
+import { createActivitiesArray, createNamesArray } from "../utilities/utilities";
 
 const TaskList = (props: { task: Activity , tasks: Array<Activity> , setTasks: (t:Array<Activity>) => void,}) => {
   const [taskName, setTaskName] = useState(props.task.name)
   const [duration, setDuration] = useState(props.task.duration)
-  // const name_array =
-  const [predecessors, setPredecessors] = useState(props.task.previous_activity.join(", "))
+  var name_array = createNamesArray(props.task.previous_activity)
+  const [predecessors, setPredecessors] = useState(name_array.join(", "))
   //  przejsc po tablicy previous activities, dodac nazwy do tablicy stringow i joinac z useState(name_array.join(", "))
-  console.log(props.tasks)
+  // console.log(props.tasks)
   const submitDelete = async (e: SyntheticEvent) => {
    props.setTasks(props.tasks.filter((t:Activity) =>t.id !== props.task.id))
     e.preventDefault();
@@ -19,9 +20,10 @@ const TaskList = (props: { task: Activity , tasks: Array<Activity> , setTasks: (
   }
   const submitUpdate = async (e: SyntheticEvent) => {
     var splitted = predecessors.split(", ", ); //tablica obiektow zamiast nazw
+    var pred_activities = createActivitiesArray(props.tasks, splitted);
    props.setTasks( props.tasks.map((tasK) => {
       if(tasK.id === props.task.id){
-        return {... tasK, name: taskName, duration : duration, previous_activity: splitted}
+        return {... tasK, name: taskName, duration : duration, previous_activity: pred_activities}
       }
       return tasK
     })

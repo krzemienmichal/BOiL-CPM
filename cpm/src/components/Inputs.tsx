@@ -4,6 +4,7 @@ import {SyntheticEvent, useState} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../styling/Inputs.css"
 import Activity from '../services/model'
+import { createActivitiesArray } from "../utilities/utilities";
 
 const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) => void, setData: (t:Array<Array<any>>) => void,}) => {
   
@@ -38,18 +39,21 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
     const submit = async (e: SyntheticEvent) => {
         let taskid = 0;
         if (props.tasks.length !==0){
-          taskid = props.tasks[props.tasks.length -1].id +1
+          taskid = props.tasks[props.tasks.length-1].id+1
         }
-        var splitted = predecessors.split(", ", ); 
-        
+        var splitted = predecessors.split(", ", );
+        var pred_activities = createActivitiesArray(props.tasks, splitted);
+        // console.log(pred_activities)
         e.preventDefault();
-        props.setTasks( [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: splitted}])
-        data = [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: splitted}]
+
+        props.setTasks( [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities}])
+        data = [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities}]
         
         setTaskName("")
         setDuration(1)
         setPredecessors("")    
         handleData()
+
       }
     const handleNameInput = (event: SyntheticEvent) => {
         //console.log("name input " +(event.target as HTMLInputElement).value )
