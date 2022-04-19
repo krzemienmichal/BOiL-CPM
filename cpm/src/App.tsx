@@ -18,6 +18,11 @@ function App() {
     name: "",
     duration: 1,
     previous_activity: [],
+    es: 0,
+    ef: 0,
+    ls: 0,
+    lf: 0,
+
   };
   const [tasks, setTasks] = useState<Array<Activity>>([])
   const [cpmEvent, setCPMEvents] = useState<Array<CPMEvent>>([])

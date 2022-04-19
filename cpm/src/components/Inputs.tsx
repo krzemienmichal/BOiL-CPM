@@ -20,7 +20,7 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
         var pred_activities = createActivitiesArray(props.tasks, splitted);
         // console.log(pred_activities)
         e.preventDefault();
-        props.setTasks( [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities}])
+        props.setTasks( [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, ef:0, es:0, ls:0, lf:0}])
         setTaskName("")
         setDuration(1)
         setPredecessors("")    

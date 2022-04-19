@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "../styling/Results.css"
 import Activity from '../services/model'
 import CPMEvent from "../services/CPMEvent";
-import {calculateBeginTime, createEventList } from "../services/cpmMetod";
+// import {calculateBeginTime, createEventList } from "../services/cpmMetod";
 
 const Results = (props: {  tasks: Array<Activity>,
     cpmEvents: Array<CPMEvent>, setCPMEvents:(t:Array<CPMEvent>) => void}) => {
@@ -14,9 +14,9 @@ const Results = (props: {  tasks: Array<Activity>,
     //     if(item.previous_activity.length == 0)
     //     let x = props.cpmEvents.find((t:CPMEvent)=> t.p)
     // })
-    var eventList = createEventList(props.tasks)
-    console.log(calculateBeginTime(eventList))
-    console.log(eventList)
+    // var eventList = createEventList(props.tasks)
+    // console.log(calculateBeginTime(eventList))
+    // console.log(eventList)
 
     // useEffect(()=> props.setCPMEvents(eventList), props.cpmEvents)
 
