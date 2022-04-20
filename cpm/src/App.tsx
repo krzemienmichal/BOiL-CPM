@@ -18,10 +18,13 @@ function App() {
     name: "",
     duration: 1,
     previous_activity: [],
+    next_activity: [],
     es: 0,
     ef: 0,
     ls: 0,
     lf: 0,
+    t_diff: 0,
+    is_critical: false,
 
   };
   const [tasks, setTasks] = useState<Array<Activity>>([])

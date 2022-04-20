@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "../styling/Results.css"
 import Activity from '../services/model'
 import CPMEvent from "../services/CPMEvent";
+import {solveCPM } from "../services/cpmMetod";
 // import {calculateBeginTime, createEventList } from "../services/cpmMetod";
 
 const Results = (props: {  tasks: Array<Activity>,
@@ -17,6 +18,8 @@ const Results = (props: {  tasks: Array<Activity>,
     // var eventList = createEventList(props.tasks)
     // console.log(calculateBeginTime(eventList))
     // console.log(eventList)
+    solveCPM(props.tasks)
+    console.log(props.tasks)
 
     // useEffect(()=> props.setCPMEvents(eventList), props.cpmEvents)
 
