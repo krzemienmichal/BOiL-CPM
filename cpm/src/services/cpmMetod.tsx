@@ -134,6 +134,7 @@ const calculateLSLF = (taskList: Array<Activity>) => {
             })
         }
     }
+    return T
 }
 
 const calculateDiff = (taskList: Array<Activity>) =>{
@@ -150,9 +151,10 @@ const findCritical = (taskList: Array<Activity>)=>{
 
 const solveCPM = (taskList: Array<Activity>)=>{
     calculateESEF(taskList);
-    calculateLSLF(taskList);
+    var criticalTime = calculateLSLF(taskList);
     calculateDiff(taskList);
     findCritical(taskList);
+    return criticalTime
 }
 
 export {solveCPM}

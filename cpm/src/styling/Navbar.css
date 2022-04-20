@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+    .navbar-side {
+        min-width: 60%;
+        max-width: 80%;
+        
+    }
+    
+}
+.main-nav{
+  /*  position: fixed;*/
+}

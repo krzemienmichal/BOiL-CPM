@@ -4,13 +4,40 @@ import {SyntheticEvent, useState} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../styling/Inputs.css"
 import Activity from '../services/model'
-import { createActivitiesArray } from "../utilities/utilities";
 
-const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) => void,}) => {
+import { createActivitiesArray, createNamesArray } from "../utilities/utilities";
+
+const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) => void, setData: (t:Array<Array<any>>) => void,  calc: number, setCalc: (t:number) => void,}) => {
+  
     const [taskName, setTaskName] = useState("")
     const [duration, setDuration] = useState(0)
     const [predecessors, setPredecessors] = useState("")
-  
+    function daysToMilliseconds(days: number) {
+      return days * 24 * 60 * 60 * 1000;
+    }
+    let data : Array<Activity>
+    const handleData = () => {
+      let handledData = []
+        for (let i=0;i<data.length ;i++){
+            let prev = null
+            let prevArr = createNamesArray(data[i].previous_activity)
+            if(prevArr.join(",") !==""){
+              prev =prevArr.join(",")
+            }
+            let temp = []
+            temp.push(data[i].name)
+            temp.push(data[i].name)
+            temp.push(null)
+            temp.push(null)
+            temp.push(null)
+            temp.push(daysToMilliseconds(data[i].duration))
+            temp.push(null)
+            temp.push(prev)
+            handledData.push(temp)
+        }
+       props.setData(handledData)
+        
+      }
     const submit = async (e: SyntheticEvent) => {
         let taskid = 0;
         if (props.tasks.length !==0){
@@ -20,11 +47,21 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
         var pred_activities = createActivitiesArray(props.tasks, splitted);
         // console.log(pred_activities)
         e.preventDefault();
+
         props.setTasks( [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, next_activity: new Array<Activity>(0), es:0, ef:0, ls:0, lf:0, t_diff: 0, is_critical: false}])
+        data = [ ...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, next_activity: new Array<Activity>(0), es:0, ef:0, ls:0, lf:0, t_diff: 0, is_critical: false}]
+
         setTaskName("")
-        setDuration(1)
+        setDuration(0)
         setPredecessors("")    
-        // console.log(props.tasks)
+        handleData()
+
+      }
+    const calculate = async (e: SyntheticEvent) => {
+        
+      
+        e.preventDefault();
+        props.setCalc(props.calc*-1)
       }
     const handleNameInput = (event: SyntheticEvent) => {
         //console.log("name input " +(event.target as HTMLInputElement).value )
@@ -58,6 +95,9 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
          <Col id = "input-task">
          <Button type="submit" variant="light">Add task</Button>
          </Col>
+        </Row>
+        <Row xs="auto">
+        <Button onClick={calculate} variant="light">Calculate </Button>
         </Row>
       </Form>
     );

@@ -8,8 +8,7 @@ import CPMEvent from "../services/CPMEvent";
 import {solveCPM } from "../services/cpmMetod";
 // import {calculateBeginTime, createEventList } from "../services/cpmMetod";
 
-const Results = (props: {  tasks: Array<Activity>,
-    cpmEvents: Array<CPMEvent>, setCPMEvents:(t:Array<CPMEvent>) => void}) => {
+const Results = (props: {  criticalTime: number, criticalPath: Array<string>,} ) => {
 
     // props.tasks.forEach((item)=>{
     //     if(item.previous_activity.length == 0)
@@ -18,22 +17,17 @@ const Results = (props: {  tasks: Array<Activity>,
     // var eventList = createEventList(props.tasks)
     // console.log(calculateBeginTime(eventList))
     // console.log(eventList)
-    solveCPM(props.tasks)
-    console.log(props.tasks)
+    
 
     // useEffect(()=> props.setCPMEvents(eventList), props.cpmEvents)
 
-    // console.log(eventList)
-    var maxTime = 10;
-    var minTime = 1;
-    var criticalPath = ["a", "b", "c"]
-
+    
     // props.setCPMEvents(eventArray)
     return (
         <span className = "results-span">
-            <p className = "results-paragraph"> Max time = {maxTime}</p>
-            <p className = "results-paragraph"> Min time = {minTime}</p>
-            <p className = "results-paragraph"> Critical path = {criticalPath.join(", ")}</p>
+            <p className = "results-paragraph"> Critical time = {props.criticalTime}</p>
+         
+            <p className = "results-paragraph"> Critical path = {props.criticalPath.join(", ")}</p>
         </span>
     );
   }

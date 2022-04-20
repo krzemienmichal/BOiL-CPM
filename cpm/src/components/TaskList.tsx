@@ -50,22 +50,22 @@ const TaskList = (props: { task: Activity , tasks: Array<Activity> , setTasks: (
   return( <Form id = "form-task-list" >
   <Row xs="auto">
 
-    <Col id = "input-task-list" variant="light"  onChange={e => handleNameInput(e)} >
-      <Form.Control placeholder={props.task.name} value={taskName} className="square border border-1" />
+    <Col id = "input-task-list" variant="light" onChange={e => handleNameInput(e)} >
+      <Form.Control size="sm" placeholder={props.task.name} value={taskName} className="square border border-1" />
     </Col> 
-
+ 
     <Col id = "input-task-list" variant="light"  onChange={e => handleDurationInput(e)}> 
-      <Form.Control placeholder={props.task.duration.toString()} value={duration} className="square border border-1" />
+      <Form.Control size="sm" placeholder={props.task.duration.toString()} value={duration} className="square border border-1" />
     </Col>
 
     <Col id = "input-task-list" variant="light"   onChange={e =>handlePredecessorsInput(e)}>
-      <Form.Control placeholder={props.task.name}  value={predecessors} className="square border border-1"/>
+      <Form.Control  size="sm" placeholder={props.task.name}  value={predecessors} className="square border border-1"/>
     </Col>
-   <Col id = "input-task-list">
-   <Button variant="light" className="square border border-1" onClick={submitUpdate}> change</Button>
+   <Col id = "input-task-list" >
+   <Button size="sm" variant="light" className="square border border-1"  onClick={submitUpdate}> change</Button>
    </Col>
-   <Col id = "input-task-list">
-   <Button  variant="light" className="square border border-1" onClick={submitDelete}> remove</Button>
+   <Col id = "input-task-list" >
+   <Button size="sm"  variant="light" className="square border border-1 " onClick={submitDelete}> remove</Button>
    </Col>
   </Row>
 </Form>)

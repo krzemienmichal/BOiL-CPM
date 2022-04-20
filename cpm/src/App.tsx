@@ -9,7 +9,7 @@ import { NavbarCustom } from './components/Navbar';
 import {useState} from  'react'
 import Activity from "./services/model"
 import CPMEvent from './services/CPMEvent';
-
+import {solveCPM } from "./services/cpmMetod";
 
 
 function App() {
@@ -28,15 +28,34 @@ function App() {
 
   };
   const [tasks, setTasks] = useState<Array<Activity>>([])
-  const [cpmEvent, setCPMEvents] = useState<Array<CPMEvent>>([])
-  // var firstEvent = [{id:1, t_begin: 0, t_end:0, t_diff:0, prev_activities: new Array<Activity>(0)}]
+  const [cpmEvent, setCPMEvents] = useState<Array<Activity>>([])
+  const [calc, setCalc] = useState<number>(1)
+  const [Data, setData] = useState<Array<Array<any>>>([])
+  const [criticalTime, setCriticalTime] = useState<number>(0)
+  const [crititalPath, setCriticalPath] = useState<Array<string>>([])
+  var mockcpm = [{id:1, t_begin: 10, t_end:20, t_diff:10},{id:2, t_begin: 5, t_end:123, t_diff:10},{id:3, t_begin: 6, t_end:11, t_diff:5}]
+  
+  useEffect(() =>{
+    let tempTasks: Array<Activity> = tasks
+    var crTime = solveCPM(tempTasks)
+    let temp: Array<string> = []
+    tasks.forEach(task =>{
+      if (task.is_critical==true){
+        temp.push(task.name)
+      }
+    })
+    setTasks(tempTasks)
+    setCPMEvents(tempTasks)
+    setCriticalTime(crTime);
+    setCriticalPath(temp)
+    
 
-  // useEffect(() => setCPMEvents(firstEvent);
+  },[calc]);
 
   return (
     <div className="App">
       <div className = "navbar-container">
-        <NavbarCustom/>
+        <NavbarCustom Data ={Data} />
         
       </div>
       <div className="content-container">
@@ -49,7 +68,7 @@ function App() {
           
           <div className="taskInput">
           <hr className="taskline"/>
-            <Inputs tasks = {tasks} setTasks={setTasks} /> 
+            <Inputs tasks = {tasks} setTasks={setTasks} setData = {setData} calc = {calc} setCalc= {setCalc}/> 
         
           </div>
         </div>
@@ -59,7 +78,7 @@ function App() {
 
           <div className="eventsList">
             {cpmEvent.map((cpmEvenT) => (<EventList  key= {cpmEvenT.id} cpmEvent={cpmEvenT}/>))}
-            <Results tasks = {tasks} cpmEvents={cpmEvent} setCPMEvents={setCPMEvents}/>
+            <Results criticalTime = {criticalTime} criticalPath = {crititalPath} />
           </div>
           {/*<div className="resultsList">*/}
           {/*  <span></span>*/}
