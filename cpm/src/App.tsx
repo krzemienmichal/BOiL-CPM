@@ -21,12 +21,8 @@ function App() {
   };
   const [tasks, setTasks] = useState<Array<Activity>>([])
   const [cpmEvent, setCPMEvents] = useState<Array<CPMEvent>>([])
-<<<<<<< HEAD
   const [Data, setData] = useState<Array<Array<any>>>([])
   var mockcpm = [{id:1, t_begin: 10, t_end:20, t_diff:10},{id:2, t_begin: 5, t_end:123, t_diff:10},{id:3, t_begin: 6, t_end:11, t_diff:5}]
-=======
-  // var firstEvent = [{id:1, t_begin: 0, t_end:0, t_diff:0, prev_activities: new Array<Activity>(0)}]
->>>>>>> origin/feature_eventList
 
   // useEffect(() => setCPMEvents(firstEvent);
 

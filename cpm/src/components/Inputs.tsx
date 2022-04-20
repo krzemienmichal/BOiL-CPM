@@ -4,7 +4,7 @@ import {SyntheticEvent, useState} from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../styling/Inputs.css"
 import Activity from '../services/model'
-import { createActivitiesArray } from "../utilities/utilities";
+import { createActivitiesArray, createNamesArray } from "../utilities/utilities";
 
 const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) => void, setData: (t:Array<Array<any>>) => void,}) => {
   
@@ -19,8 +19,9 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
       let handledData = []
         for (let i=0;i<data.length ;i++){
             let prev = null
-            if(data[i].previous_activity.join(",") !==""){
-              prev =data[i].previous_activity.join(",")
+            let prevArr = createNamesArray(data[i].previous_activity)
+            if(prevArr.join(",") !==""){
+              prev =prevArr.join(",")
             }
             let temp = []
             temp.push(data[i].name)
@@ -50,7 +51,7 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
         data = [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities}]
         
         setTaskName("")
-        setDuration(1)
+        setDuration(0)
         setPredecessors("")    
         handleData()
 
