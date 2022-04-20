@@ -33,7 +33,6 @@ function App() {
   const [Data, setData] = useState<Array<Array<any>>>([])
   const [criticalTime, setCriticalTime] = useState<number>(0)
   const [crititalPath, setCriticalPath] = useState<Array<string>>([])
-  var mockcpm = [{id:1, t_begin: 10, t_end:20, t_diff:10},{id:2, t_begin: 5, t_end:123, t_diff:10},{id:3, t_begin: 6, t_end:11, t_diff:5}]
   
   useEffect(() =>{
     let tempTasks: Array<Activity> = tasks
