@@ -45,21 +45,21 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
         }
         var splitted = predecessors.split(", ", );
         var pred_activities = createActivitiesArray(props.tasks, splitted);
-        if(splitted[0]===""){splitted.pop()}
-        console.log(splitted, pred_activities.length)
-        if(splitted.length === pred_activities.length)
+        var __splitted = splitted;
+        if(__splitted[0]===""){__splitted.pop()}
+        if(__splitted.length === pred_activities.length)
         {
             // console.log(pred_activities)
 
             setErrMsg("")
             props.setTasks( [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, next_activity: new Array<Activity>(0), es:0, ef:0, ls:0, lf:0, t_diff: 0, is_critical: false}])
-            data = [ ...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, next_activity: new Array<Activity>(0), es:0, ef:0, ls:0, lf:0, t_diff: 0, is_critical: false}]
-            handleData()
+
         }
         else{
             setErrMsg("Invalid predecessors")
         }
-
+        data = [ ...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, next_activity: new Array<Activity>(0), es:0, ef:0, ls:0, lf:0, t_diff: 0, is_critical: false}]
+        handleData()
         e.preventDefault();
         setTaskName("")
         setDuration(0)
