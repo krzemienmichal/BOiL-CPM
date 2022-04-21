@@ -59,7 +59,7 @@ const TaskList = (props: { task: Activity , tasks: Array<Activity> , setTasks: (
     </Col>
 
     <Col id = "input-task-list" variant="light"   onChange={e =>handlePredecessorsInput(e)}>
-      <Form.Control  size="sm" placeholder={props.task.name}  value={predecessors} className="square border border-1"/>
+      <Form.Control  size="sm" placeholder= " "  value={predecessors} className="square border border-1"/>
     </Col>
    <Col id = "input-task-list" >
    <Button size="sm" variant="light" className="square border border-1"  onClick={submitUpdate}> change</Button>

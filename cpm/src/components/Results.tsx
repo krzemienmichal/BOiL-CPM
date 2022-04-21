@@ -25,9 +25,13 @@ const Results = (props: {  criticalTime: number, criticalPath: Array<string>,} )
     // props.setCPMEvents(eventArray)
     return (
         <span className = "results-span">
-            <p className = "results-paragraph"> Critical time = {props.criticalTime}</p>
+              
+            <h1 className = "results-paragraph"> Final Results:</h1>
+            <ul>
+            <li className = "results-paragraph"> Critical time = {props.criticalTime}</li>
          
-            <p className = "results-paragraph"> Critical path = {props.criticalPath.join(", ")}</p>
+            <li className = "results-paragraph"> Critical path = {props.criticalPath.join(", ")}</li>
+            </ul>
         </span>
     );
   }

@@ -10,7 +10,7 @@ import {useState} from  'react'
 import Activity from "./services/model"
 import CPMEvent from './services/CPMEvent';
 import {solveCPM } from "./services/cpmMetod";
-
+import { Table } from 'react-bootstrap';
 
 function App() {
   const defaultActivity: Activity = {
@@ -76,8 +76,24 @@ function App() {
 
 
           <div className="eventsList">
+          <Table id = "table-cpmevent-list" striped bordered hover variant="light">
+            <thead>
+                  <tr>
+                    <th>Task Name</th>
+                    <th>Duration</th>
+                    <th>ES</th>
+                    <th>EF</th>
+                    <th>LS</th>
+                    <th>LF</th>
+                    <th>Time difference</th>
+                    <th>Critical Task</th>
+                  </tr>
+           </thead>
+            <tbody>
             {cpmEvent.map((cpmEvenT) => (<EventList  key= {cpmEvenT.id} cpmEvent={cpmEvenT}/>))}
-            <Results criticalTime = {criticalTime} criticalPath = {crititalPath} />
+            </tbody>
+          </Table>
+          <Results criticalTime = {criticalTime} criticalPath = {crititalPath} />
           </div>
           {/*<div className="resultsList">*/}
           {/*  <span></span>*/}
