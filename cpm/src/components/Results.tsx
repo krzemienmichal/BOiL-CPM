@@ -24,7 +24,7 @@ const Results = (props: {  criticalTime: number, criticalPath: Array<string>,} )
     
     // props.setCPMEvents(eventArray)
     return (
-        <span className = "results-span">
+        <span className = "results-span" >
               
             <h1 className = "results-paragraph"> Final Results:</h1>
             <ul>

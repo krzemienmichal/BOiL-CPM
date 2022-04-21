@@ -9,15 +9,15 @@ import Activity from '../services/model'
 
 const EventList = (props: {cpmEvent: Activity}) => {
     return( 
-    <tr>
-      <td>{props.cpmEvent.name.toString()}</td>
-      <td>{props.cpmEvent.duration.toString()}</td>
-      <td>{props.cpmEvent.es.toString()}</td>
-      <td>{props.cpmEvent.ef.toString()}</td>
-      <td>{props.cpmEvent.ls.toString()}</td>
-      <td>{props.cpmEvent.lf.toString()}</td>
-      <td>{props.cpmEvent.t_diff.toString()}</td>
-      <td>{props.cpmEvent.is_critical.toString()}</td>
+    <tr >
+      <td style={{color: props.cpmEvent.is_critical === true ? "red" : "black"}}>{props.cpmEvent.name.toString()}</td>
+      <td style={{color: props.cpmEvent.is_critical === true ? "red" : "black"}}>{props.cpmEvent.duration.toString()}</td>
+      <td style={{color: props.cpmEvent.is_critical === true ? "red" : "black"}}>{props.cpmEvent.es.toString()}</td>
+      <td style={{color: props.cpmEvent.is_critical === true ? "red" : "black"}}>{props.cpmEvent.ef.toString()}</td>
+      <td style={{color: props.cpmEvent.is_critical === true ? "red" : "black"}}>{props.cpmEvent.ls.toString()}</td>
+      <td style={{color: props.cpmEvent.is_critical === true ? "red" : "black"}}>{props.cpmEvent.lf.toString()}</td>
+      <td style={{color: props.cpmEvent.is_critical === true ? "red" : "black"}}>{props.cpmEvent.t_diff.toString()}</td>
+      <td style={{color: props.cpmEvent.is_critical === true ? "red" : "black"}}>{props.cpmEvent.is_critical.toString()}</td>
     </tr>
     )
 }
