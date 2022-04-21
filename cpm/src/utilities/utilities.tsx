@@ -1,4 +1,3 @@
-import CPMEvent from "../services/CPMEvent";
 import Activity from "../services/model"
 
 

@@ -8,7 +8,7 @@ import Activity from '../services/model'
 import { createActivitiesArray, createNamesArray } from "../utilities/utilities";
 
 const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) => void, setData: (t:Array<Array<any>>) => void,  calc: number, setCalc: (t:number) => void,}) => {
-  
+    const [errMsg, setErrMsg] = useState("")
     const [taskName, setTaskName] = useState("")
     const [duration, setDuration] = useState(0)
     const [predecessors, setPredecessors] = useState("")
@@ -45,16 +45,25 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
         }
         var splitted = predecessors.split(", ", );
         var pred_activities = createActivitiesArray(props.tasks, splitted);
-        // console.log(pred_activities)
+        if(splitted[0]===""){splitted.pop()}
+        console.log(splitted, pred_activities.length)
+        if(splitted.length === pred_activities.length)
+        {
+            // console.log(pred_activities)
+
+            setErrMsg("")
+            props.setTasks( [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, next_activity: new Array<Activity>(0), es:0, ef:0, ls:0, lf:0, t_diff: 0, is_critical: false}])
+            data = [ ...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, next_activity: new Array<Activity>(0), es:0, ef:0, ls:0, lf:0, t_diff: 0, is_critical: false}]
+            handleData()
+        }
+        else{
+            setErrMsg("Invalid predecessors")
+        }
+
         e.preventDefault();
-
-        props.setTasks( [...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, next_activity: new Array<Activity>(0), es:0, ef:0, ls:0, lf:0, t_diff: 0, is_critical: false}])
-        data = [ ...props.tasks, {id:taskid, name: taskName, duration: duration, previous_activity: pred_activities, next_activity: new Array<Activity>(0), es:0, ef:0, ls:0, lf:0, t_diff: 0, is_critical: false}]
-
         setTaskName("")
         setDuration(0)
-        setPredecessors("")    
-        handleData()
+        setPredecessors("")
 
       }
     const calculate = async (e: SyntheticEvent) => {
@@ -82,11 +91,11 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
         <Row xs="auto">
 
           <Col id = "input-task" variant="outline-secondary" onChange={e => handleNameInput(e)} >
-            <Form.Control placeholder="Task name" value={taskName}  />
+            <Form.Control required placeholder="Task name" value={taskName}  />
           </Col> 
 
           <Col id = "input-task" variant="outline-secondary"  onChange={e => handleDurationInput(e)}> 
-            <Form.Control placeholder="Duration" value={duration || ""} />
+            <Form.Control required placeholder="Duration" value={duration || ""} />
           </Col>
 
           <Col id = "input-task" variant="outline-secondary"  onChange={e =>handlePredecessorsInput(e)}>
@@ -98,6 +107,7 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
         </Row>
         <Row xs="auto">
         <Button onClick={calculate} variant="light">Calculate </Button>
+            <p style={{color:'red'}}>{errMsg}</p>
         </Row>
       </Form>
     );

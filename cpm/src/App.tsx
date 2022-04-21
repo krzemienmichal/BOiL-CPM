@@ -8,7 +8,6 @@ import {Results} from './components/Results'
 import { NavbarCustom } from './components/Navbar';
 import {useState} from  'react'
 import Activity from "./services/model"
-import CPMEvent from './services/CPMEvent';
 import {solveCPM } from "./services/cpmMetod";
 import { Table } from 'react-bootstrap';
 
