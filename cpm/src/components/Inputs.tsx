@@ -105,9 +105,14 @@ const Inputs = (props: {  tasks: Array<Activity>, setTasks: (t:Array<Activity>) 
          <Button type="submit" variant="light">Add task</Button>
          </Col>
         </Row>
-        <Row xs="auto">
-        <Button onClick={calculate} variant="light">Calculate </Button>
-            <p style={{color:'red'}}>{errMsg}</p>
+        <Row xs="auto"lg="3">
+        <Col>
+        </Col>
+        <Button id= "calculate-task" onClick={calculate}  variant="light">Calculate </Button>
+        <Col>
+        <p id= "wrong-task"  style={{color:'red'}}>{errMsg}</p>
+        </Col>
+            
         </Row>
       </Form>
     );
